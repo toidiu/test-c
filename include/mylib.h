@@ -1,3 +1,7 @@
 
 int print_hello();
-int add_int(int a, int b);
+
+struct Sum {
+    int value;
+};
+int add_int(int a, int b, struct Sum *sum);
