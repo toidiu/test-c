@@ -1,6 +1,8 @@
+#include "list.h"
+
 #include <stdio.h>
 
-#include "../include/mylib.h"
+#include "../api/mylib.h"
 
 int print_hello() {
     printf("\nHello, World from mylib!");

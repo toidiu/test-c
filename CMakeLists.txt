@@ -7,31 +7,35 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 # place add_executable in bin
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-# headers
-file(GLOB API_HEADERS "include/*.h")
+# HEADERS
+file(GLOB API_HEADERS "api/*.h")
 file(GLOB SRC_HEADERS "src/*.h")
 file(GLOB LIST_HEADERS
     ${API_HEADERS}
     ${SRC_HEADERS}
 )
-# src
+
+# SRC
 file(GLOB SRC "src/*.c")
 file(GLOB LIST_SRC
     ${SRC}
 )
 
+# ============ LIB
+
 # add library target
-add_library(mylib SHARED ${LIST_HEADERS} ${LIST_SRC})
+add_library(${PROJECT_NAME} SHARED ${LIST_HEADERS} ${LIST_SRC})
 set_target_properties(${PROJECT_NAME} PROPERTIES LINKER_LANGUAGE C)
 # add version to the library exec
-# set_target_properties(mylib PROPERTIES VERSION ${PROJECT_VERSION})
-# set_target_properties(mylib PROPERTIES SOVERSION ${PROJECT_VERSION_MAJOR})
+set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${PROJECT_VERSION})
+set_target_properties(${PROJECT_NAME} PROPERTIES SOVERSION ${PROJECT_VERSION_MAJOR})
 
-# add the api header source
-target_include_directories(mylib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+# include the api header files
+target_include_directories(${PROJECT_NAME} PUBLIC api)
+target_include_directories(${PROJECT_NAME} PRIVATE src)
 
-install(FILES ${LIST_HEADERS} DESTINATION "include/" COMPONENT Development)
 
+# ============ EXEC
 
 # also create an executable to test that lib works
 add_executable(exec_main bin/main.c)
