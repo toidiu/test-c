@@ -1,13 +1,9 @@
 #include <stdio.h>
 
-int print_list() {
-    // printf() displays the string inside quotation
-    printf("\nHello, World from MY LIB!");
-
-    int arr[] = {1, 2, 3};
-    /* int arr[] = {0}; */
-    /* arr[] = {0}; */
-
+int print_hello() {
+    printf("\nHello, World from mylib!");
     return 0;
 }
+
+int add_int(int a, int b) { return a + b; }
 

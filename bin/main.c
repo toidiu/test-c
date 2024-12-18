@@ -2,14 +2,11 @@
 #include <stdio.h>
 
 int main() {
-    // printf() displays the string inside quotation
-    printf("Hello, World!");
+    printf("\nHello, World! from main");
 
-    print_list();
-
-    int arr[] = {1, 2, 3};
-    /* int arr[] = {0}; */
-    /* arr[] = {0}; */
+    print_hello();
+    int sum = add_int(1, 2);
+    printf("\nsum %d", sum);
 
     return 0;
 }
