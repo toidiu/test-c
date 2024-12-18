@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.29)
 project(mylib VERSION 1.0.1 DESCRIPTION "mylib description" LANGUAGES C)
-
-# add_executable(exec_main src/main.c)
+include(GNUInstallDirs)
 
 # headers
 file(GLOB API_HEADERS "include/*.h")
@@ -18,14 +17,19 @@ file(GLOB LIST_SRC
 )
 
 add_library(mylib SHARED ${LIST_HEADERS} ${LIST_SRC})
+set_target_properties(${PROJECT_NAME} PROPERTIES LINKER_LANGUAGE C)
 # set_target_properties(mylib PROPERTIES VERSION ${PROJECT_VERSION})
 # set_target_properties(mylib PROPERTIES SOVERSION ${PROJECT_VERSION_MAJOR})
 
 
+target_include_directories(mylib PUBLIC include)
+# target_include_directories(mylib PRIVATE src)
 
-set_target_properties(${PROJECT_NAME} PROPERTIES LINKER_LANGUAGE C)
-# set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER ${LIST_SRC})
-# set_target_properties(mylib PROPERTIES VERSION ${PROJECT_VERSION})
+install(FILES ${LIST_HEADERS} DESTINATION "include/" COMPONENT Development)
 
-target_include_directories(mylib PRIVATE include)
-target_include_directories(mylib PRIVATE src)
+
+
+add_executable(exec_main bin/main.c)
+target_link_libraries(exec_main ${PROJECT_NAME})
+# target_compile_options(exec_main PRIVATE -std=gnu99)
+

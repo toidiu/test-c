@@ -2,7 +2,7 @@
 
 int print_list() {
     // printf() displays the string inside quotation
-    printf("Hello, World!");
+    printf("\nHello, World from MY LIB!");
 
     int arr[] = {1, 2, 3};
     /* int arr[] = {0}; */
