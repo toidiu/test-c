@@ -1,4 +1,5 @@
 pub mod ffi;
+pub mod manual_ffi;
 
 #[cfg(test)]
 mod tests {
