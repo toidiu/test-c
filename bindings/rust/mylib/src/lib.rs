@@ -1,5 +1,9 @@
-pub fn add(left: u64, right: u64) -> u64 {
-    left + right
+use mylib_sys::ffi;
+
+pub fn add(left: i32, right: i32) -> i32 {
+    let mut sum = ffi::Sum { value: 0 };
+    unsafe { ffi::add_int(left, right, (&mut sum) as *mut ffi::Sum) };
+    sum.value
 }
 
 #[cfg(test)]
