@@ -3,7 +3,6 @@
 #pragma once
 
 struct Sum;
-/* struct Sum {int value;}; */
 
 int print_hello();
 
