@@ -6,5 +6,8 @@ Pre-requisite:
 The output of this crate is `ffi.rs` and `manual_ffi.rs`. The `ffi.rs` is generate by bindgen.
 
 TODO:
-We currently need to LD_LIBRARY_PATH.. which is cumbersome. Possibly copy the source here and
-compile it here.
+We currently need to LD_LIBRARY_PATH.. which is cumbersome.
+
+Since the `target` dir is search by default, we can put the dylib there.
+- copy the source here and compile it here
+- copy dylib there (ehh)
