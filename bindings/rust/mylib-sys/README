@@ -1,0 +1,10 @@
+`cargo build` to generate the bindings.
+
+Pre-requisite:
+- build the C project
+
+The output of this crate is `ffi.rs` and `manual_ffi.rs`. The `ffi.rs` is generate by bindgen.
+
+TODO:
+We currently need to LD_LIBRARY_PATH.. which is cumbersome. Possibly copy the source here and
+compile it here.

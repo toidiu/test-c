@@ -4,11 +4,11 @@ fn main() {
     // Retrieve the location of `Cargo.toml`.
     let dir = std::env::var("CARGO_MANIFEST_DIR").unwrap();
 
-    // Look for native libraries one directory higher up.
-    let lib_root = Path::new(&dir)
-        .join("..")
-        .join("..")
-        .join("..")
+    // Look for native libraries directory higher up.
+    let lib_root = Path::new(&dir) // lib_root/bindings/rust/mylib-sys
+        .join("..") // lib_root/bindings/rust
+        .join("..") // lib_root/bindings
+        .join("..") // lib_root
         .canonicalize()
         .unwrap();
 
